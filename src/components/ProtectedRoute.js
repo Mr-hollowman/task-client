@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const ProtectedRoute = (props) => {
     const navigate = useNavigate();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const checkUser = () => {
         const user = localStorage.getItem('user');
         if (!user|| user=== 'undefined') {
-            setIsLoggedIn(false);
+            props.setIsLoggedIn(false);
             return navigate('/login');
         }
-        setIsLoggedIn(true);
+        props.setIsLoggedIn(true);
     }
     useEffect(() => {
             checkUser();
-        }, [isLoggedIn]);
+        }, [props.isLoggedIn]);
     return (
         <React.Fragment>
             {
-                isLoggedIn ? props.children : null
+                props.isLoggedIn ? props.children : null
             }
         </React.Fragment>
     );

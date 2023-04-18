@@ -16,8 +16,13 @@ import {
   MDBCollapse,
 } from 'mdb-react-ui-kit';
 
-export default function Navbar() {
+export default function Navbar({setIsLoggedIn}) {
   const [showBasic, setShowBasic] = useState(false);
+
+  const handleLogout = () =>{
+    localStorage.removeItem("user")
+    setIsLoggedIn(false)
+  }
 
   return (
     <MDBNavbar expand='lg' light bgColor='light'>
@@ -41,13 +46,11 @@ export default function Navbar() {
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-              <MDBNavbarLink href='#'>Link</MDBNavbarLink>
+              <MDBNavbarLink href='#'>create project</MDBNavbarLink>
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-              <MDBNavbarLink disabled href='#' tabIndex={-1} aria-disabled='true'>
-                Disabled
-              </MDBNavbarLink>
+                <MDBBtn onClick={handleLogout}>Logout</MDBBtn>
             </MDBNavbarItem>
           </MDBNavbarNav>
 
