@@ -10,11 +10,11 @@ function App() {
   useEffect(()=>{
     const user = JSON.parse(localStorage.getItem("user"))
     setUserInfo(user)
-  })
+  },[])
   return (
     <Routes>
       <Route path="login" element={<Login setUserInfo={setUserInfo} />} />
-      <Route path="/dashboard" element={<ProtectedRoute>{userInfo && userInfo.type === "client" ? <ClientDashboard /> : <UserDashboard />}</ProtectedRoute>} />
+    <Route path="/dashboard" element={<ProtectedRoute>{userInfo && userInfo.type === "client" ? <ClientDashboard userInfo={userInfo} /> : <UserDashboard userInfo={userInfo} />}</ProtectedRoute>} />
     </Routes>
   );
 }

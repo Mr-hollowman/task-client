@@ -1,4 +1,4 @@
-export default function UserDashboard() {
+export default function UserDashboard({userInfo}) {
   return (
     <div>UserDashboard</div>
   )
