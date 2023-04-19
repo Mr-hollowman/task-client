@@ -5,7 +5,7 @@ export default function Card({ data }) {
         <div>
             {data && data.map((item, index) => {
                 return (
-                    <Link key={index} class="card mt-3">
+                    <Link to={`/dashboard/${item._id}`} key={index} class="card mt-3">
                         <img src={item.img} class="card-img-top" alt="..." />
                         <div class="card-body">
                             <h5 class="card-title">{item.title}</h5>
