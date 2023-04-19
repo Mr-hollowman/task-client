@@ -5,12 +5,12 @@ export default function Card({ data }) {
         <div>
             {data && data.map((item, index) => {
                 return (
-                    <Link to={`/dashboard/${item._id}`} key={index} class="card mt-3">
-                        <img src={item.img} class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">{item.title}</h5>
-                            <p class="card-text">{item.description}</p>
-                            <p class="card-text"><small class="text-muted">{moment.utc(item.updatedAt).local().startOf('seconds').fromNow()}</small></p>
+                    <Link to={`/dashboard/${item._id}`} key={index} className="card mt-3">
+                        <img src={item.img} className="card-img-top" alt="..." />
+                        <div className="card-body">
+                            <h5 className="card-title">{item.title}</h5>
+                            <p className="card-text">{item.description}</p>
+                            <p className="card-text"><small className="text-muted">{moment.utc(item.updatedAt).local().startOf('seconds').fromNow()}</small></p>
                         </div>
                     </Link>
                 )
