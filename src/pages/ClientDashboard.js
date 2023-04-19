@@ -7,9 +7,9 @@ export default function ClientDashboard({ userInfo }) {
   console.log(data);
   return (
     <div>
-      {isPending && <div class="d-flex align-items-center mt-5 p-3 bg-white">
+      {isPending && <div className="d-flex align-items-center mt-5 p-3 bg-white">
         <strong>Loading...</strong>
-        <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+        <div className="spinner-border ms-auto" role="status" aria-hidden="true"></div>
       </div>}
 
       {data && !isPending && <Card data={data} />}
