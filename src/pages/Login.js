@@ -17,8 +17,7 @@ import { useNavigate } from 'react-router-dom';
 function Login({setUserInfo}) {
   const [credinals, setcredinals] = useState({})
   const navigate = useNavigate()
-
-  console.log(credinals);
+  
   const handleCredinals = (e) =>{
     setcredinals((prev)=>({...prev, [e.target.name]: e.target.value}))
   }

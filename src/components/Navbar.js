@@ -9,20 +9,12 @@ import {
   MDBNavbarItem,
   MDBNavbarLink,
   MDBBtn,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
   MDBCollapse,
 } from 'mdb-react-ui-kit';
+import { Link } from 'react-router-dom';
 
-export default function Navbar({setIsLoggedIn}) {
+export default function Navbar({setShowModel}) {
   const [showBasic, setShowBasic] = useState(false);
-
-  const handleLogout = () =>{
-    localStorage.removeItem("user")
-    setIsLoggedIn(false)
-  }
 
   return (
     <MDBNavbar expand='lg' light bgColor='light'>
@@ -46,11 +38,11 @@ export default function Navbar({setIsLoggedIn}) {
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-              <MDBNavbarLink href='#'>create project</MDBNavbarLink>
+            <Link to={'/createProject'}> <MDBNavbarLink>create project</MDBNavbarLink></Link>
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-                <MDBBtn onClick={handleLogout}>Logout</MDBBtn>
+                <MDBBtn onClick={()=>setShowModel(true)}>Logout</MDBBtn>
             </MDBNavbarItem>
           </MDBNavbarNav>
 
