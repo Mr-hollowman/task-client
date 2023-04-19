@@ -28,6 +28,7 @@ function App() {
     <Routes>
       <Route path="login" element={<Login setUserInfo={setUserInfo} />} />
       <Route path="/dashboard" element={<ProtectedRoute isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>{userInfo && userInfo?.type === "client" ? <ClientDashboard userInfo={userInfo} setIsLoggedIn={setIsLoggedIn} /> : userInfo?.type === 'user' && <UserDashboard userInfo={userInfo} /> }</ProtectedRoute>} />
+      <Route path="/dashboard:id" element={<ProtectedRoute isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>{userInfo && userInfo?.type === "client" ? <ProjectDetails userInfo={userInfo} setIsLoggedIn={setIsLoggedIn} /> : null }</ProtectedRoute>} />
       <Route path="/createProject" element={<ProtectedRoute isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}><CreateProject userInfo={userInfo} /></ProtectedRoute>} />
     </Routes>
     </div>

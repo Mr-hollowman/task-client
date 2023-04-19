@@ -13,5 +13,5 @@ code {
     monospace;
 }
 a{
-  color: black;
+  color: black !important;
 }
