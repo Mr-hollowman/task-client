@@ -1,9 +1,10 @@
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 export default function Card({ data }) {
+    const user = JSON.parse(localStorage.getItem("user"))
     return (
         <div>
-            {data && data.map((item, index) => {
+            {data && data.filter((item)=> item.creator === user._id.toString()).map((item, index) => {
                 return (
                     <Link to={`/dashboard/${item._id}`} key={index} className="card mt-3">
                         <img src={item.img} className="card-img-top" alt="..." />
