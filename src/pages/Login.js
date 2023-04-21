@@ -74,21 +74,21 @@ function Login({ setUserInfo, setToastHeading, setToastContent, toggleToast }) {
               <form onSubmit={handleLogin}>
                 <div className="form-floating mb-3">
                   <input required name="userName" type="text" className="form-control" id="floatingInput" placeholder="Enter Title" onChange={handleCredinals} />
-                  <label for="floatingInput">UserName</label>
+                  <label htmlFor="floatingInput">UserName</label>
                 </div>
                 <div className="form-floating mb-3">
                   <input required name="password" type="password" className="form-control" id="floatingInput" placeholder="Enter Title" onChange={handleCredinals} />
-                  <label for="floatingInput">Password</label>
+                  <label htmlFor="floatingInput">Password</label>
                 </div>
                 {
                   !isLogin && <>
                     <div className="form-floating mb-3">
                       <input required name="email" type="email" className="form-control" id="floatingInput" placeholder="Enter Email" onChange={handleCredinals} />
-                      <label for="floatingInput">Email</label>
+                      <label htmlFor="floatingInput">Email</label>
                     </div>
                     <div className="form-floating mb-3">
                       <input required name="phone" maxlength="10" minLength='10' type="number" className="form-control" id="floatingInput" placeholder="Enter Number" onChange={handleCredinals} />
-                      <label for="floatingInput">Phone Number</label>
+                      <label htmlFor="floatingInput">Phone Number</label>
                     </div>
                     <div className="form-floating mb-3">
                       <select name="type" className="form-select" required id="floatingSelect" aria-label="Floating label select example" onChange={handleCredinals}>
@@ -96,7 +96,7 @@ function Login({ setUserInfo, setToastHeading, setToastContent, toggleToast }) {
                         <option value="client">Client</option>
                         <option value="user">FreeLauncer</option>
                       </select>
-                      <label for="floatingSelect">User Type</label>
+                      <label htmlFor="floatingSelect">User Type</label>
                     </div>
                   </>
                 }

@@ -73,7 +73,7 @@ export default function ProjectDetails() {
           {
             userInfo?.type === 'user' ? !isAlreadySubscribed ? <div className="form-floating mb-3">
               <input name="bitValue" type="number" className="form-control" id="floatingInput" placeholder="Enter bit value" onChange={(e) => setBitValue(e.target.value)} />
-              <label for="floatingInput">Title</label>
+              <label htmlFor="floatingInput">Title</label>
               <button className='btn btn-primary' onClick={submitBit}>Submit bit</button>
             </div> : <div>You already raised bit</div> :
               <div>
