@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 function NotFound(props) {
     return (
-        <div className='not-found'>
+        <div className='container p-5   '>
             <h2>Sorry</h2>
             <p>That page cannot be found</p>
-            <Link to='/'> Back to HomePage</Link>
+            <Link to='/dashboard'> <span className='text-primary'> Click here Back to HomePage</span></Link>
         </div>
     );
 }
