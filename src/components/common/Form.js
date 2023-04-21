@@ -1,10 +1,25 @@
-export default function Form({data, setData, handleCreate}) {
+export default function Form({ data, setData, handleCreate }) {
 
-    const handleChange = (e)=>{
-        setData((prev)=>({...prev, [e.target.name]: e.target.value}))
+    const handleChange = (e) => {
+        if (e.target.name === 'img') {
+            const reader = (readFile) =>
+                new Promise ((resolve, reject) => {
+                    const fileReader = new FileReader();
+                    fileReader.onload = () => resolve(fileReader.result);
+                    fileReader.readAsDataURL(readFile);
+                });
+
+            reader(e.target.files[0]).then((result) =>
+                // setPropertyImage({ name: file?.name, url: result }),
+                setData((prev) => ({ ...prev, [e.target.name]: result }))
+            );
+        }
+        else {
+            setData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+        }
     }
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = (e) => {
         e.preventDefault();
         handleCreate()
     }
@@ -29,8 +44,21 @@ export default function Form({data, setData, handleCreate}) {
                 <label for="floatingSelect">Project Type</label>
             </div>
             <div className="form-floating mb-3">
-                <input name="price" type="price" className="form-control" id="floatingInput" placeholder="Enter Title" onChange={handleChange} />
-                <label for="floatingInput">Enter price range</label>
+                <select name="tag" className="form-select" id="floatingSelect" aria-label="Floating label select example" onChange={handleChange}>
+                    <option selected>Please select project tags</option>
+                    <option value="ReactJs">ReactJs</option>
+                    <option value="Angular">Angular</option>
+                    <option value="Nodejs">Nodejs</option>
+                </select>
+                <label for="floatingSelect">Project Tag</label>
+            </div>
+            {/* <div class="mb-3">
+                <label for="formFile" class="form-label">Please select photo reference</label>
+                <input class="form-control" name="img" type="file" id="formFile" onChange={handleChange} />
+            </div> */}
+            <div className="form-floating mb-3">
+                <input name="price" type="number" className="form-control" id="floatingInput" placeholder="Enter Price range" onChange={handleChange} />
+                <label for="floatingInput">Price range</label>
             </div>
             <div className="form-floating mb-3">
                 <input name="location" type="text" className="form-control" id="floatingInput" placeholder="Enter Location" onChange={handleChange} />

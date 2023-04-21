@@ -43,9 +43,15 @@ function Login({ setUserInfo }) {
         data: { ...credinals }
       }).then((response) => {
         if (response.status === 200) {
-          localStorage.setItem("user", JSON.stringify(response.data))
-          setUserInfo(response.data)
-          navigate("/dashboard")
+          if(isLogin){
+            localStorage.setItem("user", JSON.stringify(response.data))
+            setUserInfo(response.data)
+            navigate("/dashboard")
+          }
+          else{
+            window.location.reload()
+            navigate('/login')
+          }
         }
       }).catch((err) => console.log(err.message))
     }

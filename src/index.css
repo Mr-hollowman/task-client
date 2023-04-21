@@ -15,3 +15,6 @@ code {
 a{
   color: black !important;
 }
+.card:hover{
+  background-color:cornsilk;
+}

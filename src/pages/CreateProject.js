@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Form from "../components/common/Form";
+import MyForm from "../components/common/Form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -11,6 +11,7 @@ export default function CreateProject() {
     const email = JSON.parse(localStorage.getItem('email'))
     setData(prev=>({...prev, email}))
   },[])
+  console.log(data,"with image")
 
   const handleCreate = () =>{
     axios({
@@ -25,7 +26,7 @@ export default function CreateProject() {
   return (
       <div className="mt-5 d-flex flex-column justify-content-center align-items-center">
         <h3 className="mb-3">Create a new project</h3>
-        <Form data={data} setData={setData} handleCreate={handleCreate} />
+        <MyForm data={data} setData={setData} handleCreate={handleCreate} />
       </div>
   )
 }
