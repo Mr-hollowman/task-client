@@ -1,11 +1,12 @@
 import moment from 'moment'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 export default function Card({ data, userInfo }) {
     const user = JSON.parse(localStorage.getItem("user"))
     const clientData = data && data.filter((item) => item.creator === user._id.toString())
     return (
         <div>
-            {clientData.length === 0 && <span className='p-5 d-flex justify-content-center'>No projects to show, please create new project or try after sometimes</span>}
+            {userInfo.type === 'client' && clientData.length === 0 && <span className='p-5 d-flex justify-content-center'>No projects to show, please create new project or try after sometimes</span>}
             {userInfo.type === 'client' ?
                 clientData?.map((item, index) => {
                     return (
@@ -15,7 +16,7 @@ export default function Card({ data, userInfo }) {
                                     <h5 className="card-title">{item.title}</h5>
                                     <span>Value ₹ <span className='font-bold blockquote'>{item.startPrice}</span></span>
                                 </div>
-                                <p className="card-text text-muted">{item.description}</p>
+                                <p id='shorten' className="card-text text-muted">{item.description.slice(0, 450)+"..."}</p>
                                 <p className="card-text"><small className="text-muted">{moment.utc(item.updatedAt).local().startOf('seconds').fromNow()}</small></p>
                                 <p className="card-text" style={{ color: "blue" }}>{item.tag}</p>
                             </div>
@@ -27,9 +28,9 @@ export default function Card({ data, userInfo }) {
                             <div className="card-body border-primary">
                                 <div className='d-flex justify-content-between align-items-start mb-2'>
                                     <h5 className="card-title">{item.title}</h5>
-                                    <span className="card-title">Value ₹ <span className='mark'>{item.price}</span></span>
+                                    <span className="card-title">Value ₹ <span className='mark'>{item.startPrice}</span></span>
                                 </div>
-                                <p className="card-text text-muted">{item.description}</p>
+                                <p className="card-text text-muted">{item.description.slice(0, 450)+"..."}</p>
                                 <p className="card-text"><small className="text-muted">{moment.utc(item.updatedAt).local().startOf('seconds').fromNow()}</small></p>
                                 <p className="card-text" style={{ color: "blue" }}>{item.tag}</p>
                             </div>

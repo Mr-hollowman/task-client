@@ -5,16 +5,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color:cyan !important;
+  background-color: cyan !important;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-a{
+
+a {
   color: black !important;
 }
-.card:hover{
-  background-color:aliceblue;
+
+.card:hover {
+  background-color: aliceblue;
 }
