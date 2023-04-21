@@ -109,7 +109,7 @@ function Login({ setUserInfo, setToastHeading, setToastContent, toggleToast }) {
 
               <hr className="my-3" />
 
-              <MDBBtn className="mb-2 w-100" size="lg" style={{ backgroundColor: '#dd4b39' }}>
+              <MDBBtn onClick={()=>alert("not implemented")} className="mb-2 w-100" size="lg" style={{ backgroundColor: '#dd4b39' }}>
                 <MDBIcon fab icon="google" className="mx-2" />
                 Sign in with google
               </MDBBtn>
