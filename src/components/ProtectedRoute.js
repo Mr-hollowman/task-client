@@ -4,15 +4,15 @@ const ProtectedRoute = (props) => {
     const navigate = useNavigate();
     const checkUser = () => {
         const user = localStorage.getItem('user');
-        if (!user|| user=== 'undefined') {
+        if (!user || user === 'undefined') {
             props.setIsLoggedIn(false);
             return navigate('/login');
         }
         props.setIsLoggedIn(true);
     }
     useEffect(() => {
-            checkUser();
-        }, [props.isLoggedIn]);
+        checkUser();
+    }, [props.isLoggedIn]);
     return (
         <React.Fragment>
             {

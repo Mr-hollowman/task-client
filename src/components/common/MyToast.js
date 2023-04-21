@@ -4,7 +4,7 @@ import ToastContainer from 'react-bootstrap/ToastContainer';
 
 function MyToast({ showToast, setShowToast, toastContent, toastHeading }) {
   return (
-    <div style={{position:"fixed", top:10, right:10}}>
+    <div style={{ position: "fixed", top: 10, right: 10 }}>
       <ToastContainer className="p-3" position='top-end'>
         <Toast show={showToast} onClose={() => setShowToast(false)}>
           <Toast.Header>
@@ -18,7 +18,7 @@ function MyToast({ showToast, setShowToast, toastContent, toastHeading }) {
           <Toast.Body>{toastContent}</Toast.Body>
         </Toast>
       </ToastContainer>
-      </div>
+    </div>
   );
 }
 

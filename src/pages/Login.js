@@ -56,7 +56,6 @@ function Login({ setUserInfo, setToastHeading, setToastContent, toggleToast }) {
         }
       }).catch((err) => {
         setToastHeading(isLogin ? "Login failed" : "Signup failed")
-        console.log(err);
         setToastContent(err.message)
         toggleToast()
       })

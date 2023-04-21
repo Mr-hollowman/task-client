@@ -1,7 +1,7 @@
 export default function Form({ setData, handleCreate }) {
 
     const handleChange = (e) => {
-            setData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+        setData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
     const handleSubmit = (e) => {
@@ -12,7 +12,7 @@ export default function Form({ setData, handleCreate }) {
     return (
         <form className="w-50" onSubmit={handleSubmit}>
             <div className="form-floating mb-3">
-                <input  required name="title" type="text" className="form-control" id="floatingInput" placeholder="Enter Title" onChange={handleChange} />
+                <input required name="title" type="text" className="form-control" id="floatingInput" placeholder="Enter Title" onChange={handleChange} />
                 <label for="floatingInput">Title</label>
             </div>
             <div className="form-floating mb-3">

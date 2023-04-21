@@ -10,12 +10,12 @@ import {
   MDBModalFooter,
 } from 'mdb-react-ui-kit';
 
-export default function Modal({showModel, setShowModel, toggleShow, setIsLoggedIn}) {
-    const handleLogout = () =>{
-        localStorage.removeItem("user")
-        setIsLoggedIn(false)
-        setShowModel(false)
-      }
+export default function Modal({ showModel, setShowModel, toggleShow, setIsLoggedIn }) {
+  const handleLogout = () => {
+    localStorage.removeItem("user")
+    setIsLoggedIn(false)
+    setShowModel(false)
+  }
   return (
     <>
       <MDBModal staticBackdrop tabIndex='-1' show={showModel} setShow={setShowModel}>

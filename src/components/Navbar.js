@@ -13,7 +13,7 @@ import {
 } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 
-export default function Navbar({setShowModel, userType}) {
+export default function Navbar({ setShowModel, userType }) {
   const [showBasic, setShowBasic] = useState(false);
 
   return (
@@ -38,11 +38,11 @@ export default function Navbar({setShowModel, userType}) {
               </MDBNavbarLink>
             </MDBNavbarItem>
             {userType === 'client' && <MDBNavbarItem>
-            <Link to={'/createProject'}> <MDBNavbarLink>create project</MDBNavbarLink></Link>
+              <Link to={'/createProject'}> <MDBNavbarLink>create project</MDBNavbarLink></Link>
             </MDBNavbarItem>}
 
             <MDBNavbarItem>
-                <MDBBtn onClick={()=>setShowModel(true)}>Logout</MDBBtn>
+              <MDBBtn onClick={() => setShowModel(true)}>Logout</MDBBtn>
             </MDBNavbarItem>
           </MDBNavbarNav>
 
