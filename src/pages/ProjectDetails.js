@@ -10,8 +10,6 @@ export default function ProjectDetails() {
   const [error, setError] = useState(false)
   const [bitValue, setBitValue] = useState(null)
   const { id } = useParams()
-  console.log(data, "after add bit")
-  console.log(userInfo, "userinfo")
   useEffect(() => {
     const info = JSON.parse(localStorage.getItem('user'))
     setUserInfo(info)
@@ -26,9 +24,7 @@ export default function ProjectDetails() {
         setIspending(false)
         setError(err.message)
       })
-    // alreadySubscribed()
   }, [])
-  // console.log(data);
 
   const submitBit = () => {
     axios({

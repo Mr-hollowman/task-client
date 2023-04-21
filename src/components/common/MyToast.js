@@ -14,7 +14,6 @@ function MyToast({ showToast, setShowToast, toastContent, toastHeading }) {
               alt=""
             />
             <strong className="me-auto">{toastHeading}</strong>
-            {/* <small>11 mins ago</small> */}
           </Toast.Header>
           <Toast.Body>{toastContent}</Toast.Body>
         </Toast>
