@@ -87,7 +87,7 @@ function Login({ setUserInfo, setToastHeading, setToastContent, toggleToast }) {
                       <label for="floatingInput">Email</label>
                     </div>
                     <div className="form-floating mb-3">
-                      <input required name="phone" type="number" className="form-control" id="floatingInput" placeholder="Enter Number" onChange={handleCredinals} />
+                      <input required name="phone" maxlength="10" minLength='10' type="number" className="form-control" id="floatingInput" placeholder="Enter Number" onChange={handleCredinals} />
                       <label for="floatingInput">Phone Number</label>
                     </div>
                     <div className="form-floating mb-3">
