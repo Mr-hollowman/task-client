@@ -3,7 +3,7 @@ import MyForm from "../components/common/Form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function CreateProject() {
+export default function CreateProject({setToastHeading, setToastContent, toggleToast}) {
   const [data, setData] = useState({})
   const navigate = useNavigate()
 
@@ -21,6 +21,11 @@ export default function CreateProject() {
         data: {...data}
     }).then((res)=>{
       navigate('/dashboard')
+      
+    }).catch(err=>{
+      setToastHeading("failed to create project")
+      setToastContent(err.message)
+      toggleToast()
     })
   }
   return (

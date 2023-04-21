@@ -6,22 +6,19 @@ import {
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBInput,
   MDBIcon,
-  MDBCheckbox
 }
   from 'mdb-react-ui-kit';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function Login({ setUserInfo }) {
+function Login({ setUserInfo, setToastHeading, setToastContent, toggleToast }) {
   const [isLogin, setIsLogin] = useState(true)
   const [credinals, setcredinals] = useState({})
   const navigate = useNavigate()
 
   const handleCredinals = (e) => {
     setcredinals((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-    console.log(credinals.type,"type")
   }
 
   useEffect(() => {
@@ -31,7 +28,8 @@ function Login({ setUserInfo }) {
     }
   })
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault()
     if (JSON.stringify(credinals) === '{}') {
       alert("please fill the credinals")
     }
@@ -43,59 +41,81 @@ function Login({ setUserInfo }) {
         data: { ...credinals }
       }).then((response) => {
         if (response.status === 200) {
-          if(isLogin){
+          if (isLogin) {
             localStorage.setItem("user", JSON.stringify(response.data))
             setUserInfo(response.data)
             navigate("/dashboard")
           }
-          else{
-            window.location.reload()
-            navigate('/login')
+          if (!isLogin) {
+            setToastHeading("Signup Success")
+            setToastContent("User created successfully, Please login with credinals")
+            toggleToast()
+            setIsLogin(!isLogin)
           }
         }
-      }).catch((err) => console.log(err.message))
+      }).catch((err) => {
+        setToastHeading(isLogin ? "Login failed" : "Signup failed")
+        console.log(err);
+        setToastContent(err.message)
+        toggleToast()
+      })
     }
   }
   return (
     <MDBContainer fluid>
 
-      <MDBRow className='d-flex justify-content-center align-items-center h-100'>
+      <MDBRow className='d-flex justify-content-center align-items-center'>
         <MDBCol col='12'>
 
-          <MDBCard className='bg-white my-5 mx-auto' style={{ borderRadius: '1rem', maxWidth: '500px' }}>
-            <MDBCardBody className='p-5 w-100 d-flex flex-column'>
+          <MDBCard className='bg-white my-4 mx-auto' style={{ borderRadius: '1rem', maxWidth: '400px' }}>
+            <MDBCardBody className='w-100 d-flex flex-column'>
 
-              <h2 className="fw-bold mb-2 text-center">{isLogin ? "Sign in" : "Sign Up"}</h2>
-              <p className="text-white-50 mb-3">Please enter your login and password!</p>
+              <h2 className="fw-bold mb-3 text-center">{isLogin ? "Sign in" : "Sign Up"}</h2>
+              <form onSubmit={handleLogin}>
+                <div className="form-floating mb-3">
+                  <input required name="userName" type="text" className="form-control" id="floatingInput" placeholder="Enter Title" onChange={handleCredinals} />
+                  <label for="floatingInput">UserName</label>
+                </div>
+                <div className="form-floating mb-3">
+                  <input required name="password" type="password" className="form-control" id="floatingInput" placeholder="Enter Title" onChange={handleCredinals} />
+                  <label for="floatingInput">Password</label>
+                </div>
+                {
+                  !isLogin && <>
+                    <div className="form-floating mb-3">
+                      <input required name="email" type="email" className="form-control" id="floatingInput" placeholder="Enter Email" onChange={handleCredinals} />
+                      <label for="floatingInput">Email</label>
+                    </div>
+                    <div className="form-floating mb-3">
+                      <input required name="phone" type="number" className="form-control" id="floatingInput" placeholder="Enter Number" onChange={handleCredinals} />
+                      <label for="floatingInput">Phone Number</label>
+                    </div>
+                    <div className="form-floating mb-3">
+                      <select name="type" className="form-select" required id="floatingSelect" aria-label="Floating label select example" onChange={handleCredinals}>
+                        <option selected value=''>Please select user type</option>
+                        <option value="client">Client</option>
+                        <option value="user">FreeLauncer</option>
+                      </select>
+                      <label for="floatingSelect">User Type</label>
+                    </div>
+                  </>
+                }
+                <div className='text-center'>
+                  <MDBBtn type='submit' size='lg' >
+                    {isLogin ? "Login" : "Signup"}
+                  </MDBBtn>
+                </div>
+              </form>
 
-              <MDBInput onChange={handleCredinals} required name='userName' wrapperClass='mb-4 w-100' label='Email address' id='formControlLg' type='text' size="lg" />
-              <MDBInput onChange={handleCredinals} required name='password' wrapperClass='mb-4 w-100' label='Password' id='formControlLg' type='password' size="lg" />
-              {
-                !isLogin && <>
-                  <MDBInput onChange={handleCredinals} required name='email' wrapperClass='mb-4 w-100' label='Email address' id='formControlLg' type='email' size="lg" />
-                  <MDBInput onChange={handleCredinals} required name='phone' wrapperClass='mb-4 w-100' label='Phone number' id='formControlLg' type='number' size="lg" />
-                  <div className="form-floating mb-3">
-                    <select name="type" className="form-select" required id="floatingSelect" aria-label="Floating label select example" onChange={handleCredinals}>
-                      <option selected value=''>Please select user type</option>
-                      <option value="client">Client</option>
-                      <option value="user">FreeLauncer</option>
-                    </select>
-                    <label for="floatingSelect">User Type</label>
-                  </div>
-                </>
-              }
-              <MDBBtn size='lg' onClick={handleLogin} >
-                {isLogin ? "Login" : "Signup"}
-              </MDBBtn>
-
-              <hr className="my-4" />
+              <hr className="my-3" />
 
               <MDBBtn className="mb-2 w-100" size="lg" style={{ backgroundColor: '#dd4b39' }}>
                 <MDBIcon fab icon="google" className="mx-2" />
                 Sign in with google
               </MDBBtn>
 
-              <p style={{ cursor: "pointer" }} onClick={() => setIsLogin(!isLogin)} >already user? click <span style={{ color: "blue" }}>here</span> to login</p>
+              {isLogin && <p style={{ cursor: "pointer" }} onClick={() => setIsLogin(!isLogin)} >New user? click <span style={{ color: "blue" }}>here</span> to Signup</p>}
+              {!isLogin && <p style={{ cursor: "pointer" }} onClick={() => setIsLogin(!isLogin)} >already user? click <span style={{ color: "blue" }}>here</span> to login</p>}
 
             </MDBCardBody>
           </MDBCard>

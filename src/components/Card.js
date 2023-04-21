@@ -14,7 +14,7 @@ export default function Card({ data, userInfo }) {
                             <div className="card-body border-primary">
                                 <div className='d-flex justify-content-between align-items-center mb-2'>
                                 <h5 className="card-title">{item.title}</h5>
-                                <span>Value ₹ <span className='font-bold blockquote'>{item.price}</span></span>
+                                <span>Value ₹ <span className='font-bold blockquote'>{item.startPrice}</span></span>
                                 </div>
                                 <p className="card-text text-muted">{item.description}</p>
                                 <p className="card-text"><small className="text-muted">{moment.utc(item.updatedAt).local().startOf('seconds').fromNow()}</small></p>

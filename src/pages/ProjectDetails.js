@@ -69,7 +69,7 @@ export default function ProjectDetails() {
       </div>
         <div className='container mt-3 p-4 bg-white'>
           <p>Job Description:</p>
-          <p className='mx-3 text-muted'>{data.description}</p>
+          <p className='mx-3 w-80 text-muted'>{data.description}</p>
           <p>Skills : <span className='text-primary'>{data.tag}</span></p>
           <p>About the client:</p>
           <div className='mx-3 d-flex flex-column'>

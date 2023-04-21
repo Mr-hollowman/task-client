@@ -12,11 +12,11 @@ export default function Form({ setData, handleCreate }) {
     return (
         <form className="w-50" onSubmit={handleSubmit}>
             <div className="form-floating mb-3">
-                <input name="title" type="text" className="form-control" id="floatingInput" placeholder="Enter Title" onChange={handleChange} />
+                <input  required name="title" type="text" className="form-control" id="floatingInput" placeholder="Enter Title" onChange={handleChange} />
                 <label for="floatingInput">Title</label>
             </div>
             <div className="form-floating mb-3">
-                <textarea name="description" className="form-control" placeholder="Enter description" id="floatingTextarea2" style={{ "height": "100px" }} onChange={handleChange}></textarea>
+                <textarea required minlength="100" name="description" className="form-control" placeholder="Enter description" id="floatingTextarea2" style={{ "height": "100px" }} onChange={handleChange}></textarea>
                 <label for="floatingTextarea2">Description</label>
             </div>
             <div className="form-floating mb-3">
@@ -29,7 +29,7 @@ export default function Form({ setData, handleCreate }) {
                 <label for="floatingSelect">Project Type</label>
             </div>
             <div className="form-floating mb-3">
-                <select name="tag" className="form-select" id="floatingSelect" aria-label="Floating label select example" onChange={handleChange}>
+                <select required name="tag" className="form-select" id="floatingSelect" aria-label="Floating label select example" onChange={handleChange}>
                     <option selected>Please select project tags</option>
                     <option value="ReactJs">ReactJs</option>
                     <option value="Angular">Angular</option>
@@ -38,15 +38,15 @@ export default function Form({ setData, handleCreate }) {
                 <label for="floatingSelect">Project Tag</label>
             </div>
             <div className="form-floating mb-3">
-                <input name="startPrice" type="number" className="form-control" id="floatingInput" placeholder="Enter Startig Price range" onChange={handleChange} />
+                <input required name="startPrice" type="number" className="form-control" id="floatingInput" placeholder="Enter Startig Price range" onChange={handleChange} />
                 <label for="floatingInput">Start Price range</label>
             </div>
             <div className="form-floating mb-3">
-                <input name="endPrice" type="number" className="form-control" id="floatingInput" placeholder="Enter Ending Price range" onChange={handleChange} />
+                <input required name="endPrice" type="number" className="form-control" id="floatingInput" placeholder="Enter Ending Price range" onChange={handleChange} />
                 <label for="floatingInput">End Price range</label>
             </div>
             <div className="form-floating mb-3">
-                <input name="location" type="text" className="form-control" id="floatingInput" placeholder="Enter Location" onChange={handleChange} />
+                <input required name="location" type="text" className="form-control" id="floatingInput" placeholder="Enter Location" onChange={handleChange} />
                 <label for="floatingInput">Location</label>
             </div>
             <div className="d-flex justify-content-center align-items-center">
