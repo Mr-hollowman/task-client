@@ -17,7 +17,7 @@ export default function Navbar({ setShowModel, userType }) {
   const [showBasic, setShowBasic] = useState(false);
 
   return (
-    <MDBNavbar expand='lg' light bgColor='light'>
+    <MDBNavbar expand='lg' light bgColor='light' className='sticky-top' >
       <MDBContainer fluid>
         <MDBNavbarBrand href='#'>FreeLauncer app</MDBNavbarBrand>
 
