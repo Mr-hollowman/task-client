@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 export default function Card({ data, userInfo }) {
     const user = JSON.parse(localStorage.getItem("user"))
     const clientData = data && data.filter((item) => item.creator === user._id.toString())
-    console.log(clientData);
     return (
         <div>
             {clientData.length === 0 && <span className='p-5 d-flex justify-content-center'>No projects to show, please create new project or try after sometimes</span> }

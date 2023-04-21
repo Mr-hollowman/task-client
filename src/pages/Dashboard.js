@@ -3,7 +3,6 @@ import useFetch from "../utils/useFetch";
 
 export default function Dashboard({ userInfo }) {
   const { data, isPending, error } = useFetch("http://192.168.1.41:8080/api/projects")
-  console.log(data);
   return (
     <div>
       {isPending && <div className="d-flex align-items-center mt-5 p-3 bg-white">
