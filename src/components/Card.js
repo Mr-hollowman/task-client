@@ -10,9 +10,9 @@ export default function Card({ data, userInfo }) {
             {userInfo.type === 'client' ?
                 clientData?.map((item, index) => {
                     return (
-                        <Link to={`/dashboard/${item._id}`} key={index} className="card mt-3">
+                        <Link to={`/dashboard/${item._id}`} state={{ data: item }} key={index} className="card mt-3">
                             {/* <img src={item.img} className="card-img-top" style={{width:"100%", height:"150px"}} alt="..." /> */}
-                            <div className="card-body">
+                            <div className="card-body border-primary">
                                 <div className='d-flex justify-content-between align-items-center mb-2'>
                                 <h5 className="card-title">{item.title}</h5>
                                 <span>Value ₹ <span className='font-bold blockquote'>{item.price}</span></span>
@@ -25,9 +25,9 @@ export default function Card({ data, userInfo }) {
                     )
                 }) : data && data?.map((item, index) => {
                     return (
-                        <Link to={`/dashboard/${item._id}`} key={index} className="card mt-3">
+                        <Link to={`/dashboard/${item._id}`} state={{ data: item }}  key={index} className="card mt-3">
                             {/* <img src={item.img} className="card-img-top" alt="..." /> */}
-                            <div className="card-body">
+                            <div className="card-body border-primary">
                                 <div className='d-flex justify-content-between align-items-start mb-2'>
                                 <h5 className="card-title">{item.title}</h5>
                                 <span className="card-title">Value ₹ <span className='mark'>{item.price}</span></span>
