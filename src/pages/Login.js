@@ -21,6 +21,7 @@ function Login({ setUserInfo }) {
 
   const handleCredinals = (e) => {
     setcredinals((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+    console.log(credinals.type,"type")
   }
 
   useEffect(() => {
@@ -69,10 +70,11 @@ function Login({ setUserInfo }) {
                   <MDBInput onChange={handleCredinals} required name='phone' wrapperClass='mb-4 w-100' label='Phone number' id='formControlLg' type='number' size="lg" />
                   <div className="form-floating mb-3">
                     <select name="type" className="form-select" required id="floatingSelect" aria-label="Floating label select example" onChange={handleCredinals}>
-                      <option selected value="client">Client</option>
+                      <option selected value=''>Please select user type</option>
+                      <option value="client">Client</option>
                       <option value="user">FreeLauncer</option>
                     </select>
-                    <label for="floatingSelect">Project Type</label>
+                    <label for="floatingSelect">User Type</label>
                   </div>
                 </>
               }

@@ -1,5 +1,4 @@
 import Card from "../components/Card";
-import Navbar from "../components/Navbar";
 import useFetch from "../utils/useFetch";
 
 export default function ClientDashboard({ userInfo }) {
@@ -12,7 +11,7 @@ export default function ClientDashboard({ userInfo }) {
         <div className="spinner-border ms-auto" role="status" aria-hidden="true"></div>
       </div>}
 
-      {data && !isPending && <Card data={data} />}
+      {data && !isPending && <Card userInfo={userInfo} data={data} />}
     </div>
   )
 }

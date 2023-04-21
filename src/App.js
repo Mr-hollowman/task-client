@@ -24,11 +24,11 @@ function App() {
   },[isLoggedIn])
   return (
     <div>
-      {isLoggedIn && <Navbar setIsLoggedIn={setIsLoggedIn} setShowModel={setShowModel}/>}
+      {isLoggedIn && <Navbar userType = {userInfo?.type} setIsLoggedIn={setIsLoggedIn} setShowModel={setShowModel}/>}
       {isLoggedIn && <Modal setIsLoggedIn={setIsLoggedIn} toggleShow={toggleShow} showModel={showModel}  setShowModel={setShowModel} />}
     <Routes>
       <Route path="/login" element={<Login setUserInfo={setUserInfo} />} />
-      <Route path="/dashboard" element={<ProtectedRoute isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>{userInfo && userInfo?.type === "client" ? <ClientDashboard userInfo={userInfo} setIsLoggedIn={setIsLoggedIn} /> : userInfo?.type === 'user' && <UserDashboard userInfo={userInfo} /> }</ProtectedRoute>} />
+      <Route path="/dashboard" element={<ProtectedRoute isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}><ClientDashboard userInfo={userInfo} setIsLoggedIn={setIsLoggedIn} /></ProtectedRoute>} />
       <Route path="/dashboard/:id" element={<ProtectedRoute isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>{userInfo && userInfo?.type === "client" ? <ProjectDetails userInfo={userInfo} setIsLoggedIn={setIsLoggedIn} /> : null }</ProtectedRoute>} />
       <Route path="/createProject" element={<ProtectedRoute isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}><CreateProject userInfo={userInfo} /></ProtectedRoute>} />
     </Routes>
