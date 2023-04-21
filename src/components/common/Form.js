@@ -29,6 +29,10 @@ export default function Form({data, setData, handleCreate}) {
                 <label for="floatingSelect">Project Type</label>
             </div>
             <div className="form-floating mb-3">
+                <input name="price" type="price" className="form-control" id="floatingInput" placeholder="Enter Title" onChange={handleChange} />
+                <label for="floatingInput">Enter price range</label>
+            </div>
+            <div className="form-floating mb-3">
                 <input name="location" type="text" className="form-control" id="floatingInput" placeholder="Enter Location" onChange={handleChange} />
                 <label for="floatingInput">Location</label>
             </div>

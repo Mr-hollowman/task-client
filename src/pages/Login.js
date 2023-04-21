@@ -38,7 +38,7 @@ function Login({ setUserInfo }) {
       axios({
         "Content-Type": "application/json",
         method: 'post',
-        url: `http://192.168.1.41:8080/api/auth/${isLogin?"signin":"signup"}`,
+        url: `http://192.168.1.41:8080/api/auth/${isLogin ? "signin" : "signup"}`,
         data: { ...credinals }
       }).then((response) => {
         if (response.status === 200) {
@@ -66,6 +66,7 @@ function Login({ setUserInfo }) {
               {
                 !isLogin && <>
                   <MDBInput onChange={handleCredinals} required name='email' wrapperClass='mb-4 w-100' label='Email address' id='formControlLg' type='email' size="lg" />
+                  <MDBInput onChange={handleCredinals} required name='phone' wrapperClass='mb-4 w-100' label='Phone number' id='formControlLg' type='number' size="lg" />
                   <div className="form-floating mb-3">
                     <select name="type" className="form-select" required id="floatingSelect" aria-label="Floating label select example" onChange={handleCredinals}>
                       <option selected value="client">Client</option>
@@ -76,7 +77,7 @@ function Login({ setUserInfo }) {
                 </>
               }
               <MDBBtn size='lg' onClick={handleLogin} >
-                {isLogin? "Login": "Signup"}
+                {isLogin ? "Login" : "Signup"}
               </MDBBtn>
 
               <hr className="my-4" />
