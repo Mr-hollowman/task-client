@@ -1,8 +1,9 @@
+import { BaseUrl } from "../config";
 import Card from "../components/Card";
 import useFetch from "../utils/useFetch";
 
 export default function Dashboard({ userInfo }) {
-  const { data, isPending, error } = useFetch("http://192.168.1.41:8080/api/projects")
+  const { data, isPending, error } = useFetch(`${BaseUrl}/api/projects`)
   return (
     <div>
       {isPending && <div className="d-flex align-items-center mt-5 p-3 bg-white">

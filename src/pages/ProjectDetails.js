@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import axios from 'axios'
+import { BaseUrl } from '../config'
 
 export default function ProjectDetails() {
   const [userInfo, setUserInfo] = useState([])
@@ -15,7 +16,7 @@ export default function ProjectDetails() {
     const info = JSON.parse(localStorage.getItem('user'))
     setUserInfo(info)
     setIspending(true)
-    axios.get("http://192.168.1.41:8080/api/projects/" + id, { params: { id: id } })
+    axios.get(`${BaseUrl}/api/projects/` + id, { params: { id: id } })
       .then((res) => {
         if (res.status === 200) {
           setData(res.data)
@@ -32,7 +33,7 @@ export default function ProjectDetails() {
   const submitBit = () => {
     axios({
       method: "POST",
-      url: "http://192.168.1.41:8080/api/projects/" + id,
+      url: `${BaseUrl}/api/projects/` + id,
       params: { id: id },
       data: { ...userInfo, bitValue }
     }).then((res) => {
@@ -42,11 +43,6 @@ export default function ProjectDetails() {
 
   const alreadySubscribed = () => {
     const isSubscribed = data && data.bits.length > 0 && data.bits.filter((item) => item._id === userInfo._id)
-    // setTimeout(() => {
-    //   const isSubscribed = data && data?.bits.filter((item) => item._id === userInfo._id)
-    //   console.log(isSubscribed, "issubscribed")
-    //   // setIsAlreadySubscribed(isSubscribed)
-    // }, 5000);
     return isSubscribed
   }
   const isAlreadySubscribed = useMemo(() => alreadySubscribed(), [data])

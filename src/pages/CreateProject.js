@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import MyForm from "../components/common/Form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BaseUrl } from "../config";
 
 export default function CreateProject({setToastHeading, setToastContent, toggleToast}) {
   const [data, setData] = useState({})
@@ -17,7 +18,7 @@ export default function CreateProject({setToastHeading, setToastContent, toggleT
     axios({
       "Content-Type":"application/json",
         method: 'post',
-        url: "http://192.168.1.41:8080/api/projects",
+        url: `${BaseUrl}/api/projects`,
         data: {...data}
     }).then((res)=>{
       navigate('/dashboard')

@@ -11,6 +11,7 @@ import {
   from 'mdb-react-ui-kit';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { BaseUrl } from '../config';
 
 function Login({ setUserInfo, setToastHeading, setToastContent, toggleToast }) {
   const [isLogin, setIsLogin] = useState(true)
@@ -37,7 +38,7 @@ function Login({ setUserInfo, setToastHeading, setToastContent, toggleToast }) {
       axios({
         "Content-Type": "application/json",
         method: 'post',
-        url: `http://192.168.1.41:8080/api/auth/${isLogin ? "signin" : "signup"}`,
+        url: `${BaseUrl}/api/auth/${isLogin ? "signin" : "signup"}`,
         data: { ...credinals }
       }).then((response) => {
         if (response.status === 200) {
