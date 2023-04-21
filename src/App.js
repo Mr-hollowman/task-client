@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Modal from "./components/common/Model";
 import ProjectDetails from "./pages/ProjectDetails";
 import MyToast from "./components/common/MyToast";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const [userInfo, setUserInfo] = useState([]);
@@ -43,6 +44,7 @@ function App() {
         <Route path="/dashboard" element={<ProtectedRoute isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}><Dashboard userInfo={userInfo} /></ProtectedRoute>} />
         <Route path="/dashboard/:id" element={<ProtectedRoute isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}><ProjectDetails /></ProtectedRoute>} />
         <Route path="/createProject" element={<ProtectedRoute isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}><CreateProject setToastContent={setToastContent} setToastHeading={setToastHeading} toggleToast={toggleToast} /></ProtectedRoute>} />
+        <Route path='*' element={<NotFound />}></Route>
       </Routes>
     </div>
   );
