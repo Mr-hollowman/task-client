@@ -16,8 +16,6 @@ function App() {
   const [showToast, setShowToast] = useState(false);
   const [toastContent, setToastContent] = useState(null)
   const [toastHeading, setToastHeading] = useState(null)
-  console.log(toastContent,"toast content");
-  console.log(toastHeading,"toast Heading");
 
   const toggleShow = ()=>{
     setShowModel(!showModel)

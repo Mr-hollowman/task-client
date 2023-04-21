@@ -12,7 +12,6 @@ export default function CreateProject({setToastHeading, setToastContent, toggleT
     const email = JSON.parse(localStorage.getItem('email'))
     setData(prev=>({...prev, email}))
   },[])
-  console.log(data,"with image")
 
   const handleCreate = () =>{
     axios({
